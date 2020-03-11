@@ -1,24 +1,16 @@
 const { Router } = require("express");
 const router = Router();
 
-const core = require('../controllers/core.controller')
+const productCtrl = require('../controllers/products.controller')
 
-const authCtrl = require('../controllers/auth.controller')
-//const taskCtrl = require('../controllers/task.controller')
+//router.route('/').get(authCtrl.sayHello)
 
-//router.route('/').get(authCtrl.getData)
-/*
-router.route('/tasks')
-    .get(taskCtrl.getTask)
-    .post(taskCtrl.createTask)
+router.route('/products')
+    .get(productCtrl.getData)
+    .post(productCtrl.createData)
+    .put(productCtrl.deleteData)
 
-router.route('/private-tasks')
-    .get(core.verifyToken,taskCtrl.getTask)
-    .post(taskCtrl.createTask)
-*/
-router.post('/singup', authCtrl.singUp)
-router.post('/singin', authCtrl.singIn)
-
-router.get('/profile',core.verifyToken, authCtrl.profile)
+router.route('/products/:id')
+    .post(productCtrl.deleteData)
 
 module.exports = router;
